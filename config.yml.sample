@@ -1,0 +1,19 @@
+institutions:
+  card-company:
+    id: 1
+    name: Card Company
+    organization: Card Company Services
+    ofx-url: https://ofx.cardcompany.com
+input:
+  credit-cards:
+    fi-name: card-company
+    account-number: 5555555555555555
+    user-name: username
+    password: secret
+  files:
+    - /home/user/ofx
+taggers:
+  Regex( Pattern)?:
+    <field-name>: value
+    match:
+      <field-name>: 1 #group id/name
