@@ -22,11 +22,11 @@
 (defn read-ofx-file [ofx-file]
   (filter-empty (ofx/parse ofx-file)))
 
-(defn read-ofx-remote [fid account-number username password]
+(defn read-ofx-remote [fid account-number username password start-date end-date]
   (let [fi (.getFinancialInstitution (FinancialInstitutionServiceImpl.) fid)
         cc-details (create-cc-details account-number)
         cc-account (.loadCreditCardAccount fi cc-details username password)]
-    (filter-empty (ofx/parse-data (.readStatement cc-account (Date/from (.toInstant (.atZone (LocalDateTime/of 2016 6 1 0 0) (ZoneId/systemDefault)))) (Date.))))))
+    (filter-empty (ofx/parse-data (.readStatement cc-account start-date end-date)))))
 
 (defn create-fid [fi-id name organization url]
   (let [fid (BaseFinancialInstitutionData.)]
