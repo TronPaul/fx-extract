@@ -2,9 +2,7 @@
   (:require [ofx-clj.core :as ofx])
   (:import (net.sf.ofx4j.client.impl FinancialInstitutionServiceImpl BaseFinancialInstitutionData)
            (net.sf.ofx4j.domain.data.creditcard CreditCardAccountDetails)
-           (java.net URL)
-           (java.util Date)
-           (java.time LocalDateTime ZoneId)))
+           (java.net URL)))
 
 (defn filter-empty [m]
   (into {} (map (fn [[k v]]
