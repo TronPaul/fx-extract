@@ -7,4 +7,4 @@
   (testing "Test read ofx file"
     (let [ts (read-ofx-file (io/resource "sample.ofx"))]
       (is (= 3 (count ts)))
-      (is (= true (every? (comp nil? :correction-id) ts))))))
+      (is (true? (every? (comp not #(contains? % :correction-id)) ts))))))
